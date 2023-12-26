@@ -16,6 +16,7 @@ gh repo clone username/Portfolio
 
 ```
 cd Portfolio
+cd test
 ```
 
 <p>3. Install dependancies</p>
