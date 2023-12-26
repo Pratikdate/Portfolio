@@ -15,7 +15,8 @@ gh repo clone username/Portfolio
 <p>2. Move inside directory</p>
 
 ```
-cd Portfolio
+cd PortFolio
+cd test
 ```
 
 <p>3. Install dependancies</p>
