@@ -15,7 +15,7 @@ gh repo clone username/Portfolio
 <p>2. Move inside directory</p>
 
 ```
-cd Portfolio
+cd PortFolio
 cd test
 ```
 
