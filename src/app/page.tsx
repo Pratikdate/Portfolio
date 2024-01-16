@@ -1,8 +1,6 @@
 'use client'
 
 
-
-
 import React,{FC,useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Stack from '@mui/material/Stack';
@@ -20,7 +18,7 @@ import TelegramIcon from '@mui/icons-material/Telegram';
 import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem} from "@nextui-org/react";
 import Button from '@mui/material/Button';
 import Image from 'next/image'
-import {Card, CardHeader, CardBody, CardFooter, Divider, Link} from "@nextui-org/react";
+import {Card, CardHeader, CardBody, CardFooter, Divider, Link as Link_} from "@nextui-org/react";
 import SchoolIcon from '@mui/icons-material/School';
 import {Chip} from "@nextui-org/react";
 import CardActions from '@mui/material/CardActions';
@@ -32,34 +30,22 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import MessForm from "./Form";
-
+import { BrowserRouter as Router, Route,Link, Routes } from 'react-router-dom';
 
 
 
 export default function Home() {
-  
-  //POST()
-  // const [Theam,setheam]=useState<'light' | 'dark'>('light')
-  // const colorMode = React.useMemo(
-  //   () => ({
-  //     Home: () => {
-  //       setheam((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
-  //     },
-  //   }),
-  //   [],
-  // )
 
   return (  
     
     <main className="flex min-h-screen flex-col  items-center justify-between">
       
-      <section className='Profile' id='home'>
+      <section className='justify-center' id='home'>
       <Navbar/>
       
       <MYProfile/>
-        
-      
       <CVButton/>
+
       </section>
       
       <Typography variant="h5" className=' font-semibold' color={'GrayText'} noWrap component="div" sx={{ flexGrow: 2 ,mt:10,mb:3}}>ABOUT ME</Typography>
@@ -93,15 +79,15 @@ export default function Home() {
         </div>
         <div className='items-center grid grid-cols-5 grid-rows-1 gap-6   bg-gray-200 pl-10  rounded-md'>
         <Skills src='/keras.png' name='keras'/>
-        <Skills src='/tensorflow.png' name='mysql'/>
-        <Skills src='/sklearn.jpg' name='mongodb'/>
-        <Skills src='/sklearn.jpg' name='next'/>
-        <Skills  src='/android.png' name='django'/>
+        <Skills src='/tensorflow.png' name='tensorflow'/>
+        <Skills src='/sklearn.jpg' name='Sklearn'/>
+        <Skills src='/flutter.png' name='flutter'/>
+        <Skills  src='/android.png' name='android'/>
         </div>
 
       </section>
       <Typography variant="h5" className=' font-semibold' color={'GrayText'} noWrap component="div" sx={{ flexGrow: 2 ,mx:24,mt:16}}>MY PROJECTS</Typography>
-      <section className='flex lg:flex-row sm:flex-col my-8' id='project'>
+      <section className='flex lg:flex-row flex-col my-8' id='project'>
       <Projects img="/tensorflow.png" title="Emart" text="Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica" />
       <Projects img="/tensorflow.png" title="Ping Pong AI game" text="Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica"/>
       <Projects  img="/tensorflow.png" title="Tic Tac Toe AI app" text="Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica"/>
@@ -263,9 +249,11 @@ function MYProfile(){
 }
 function CVButton(){
   return(
-    <Button variant="outlined"  color='primary'  className=' mx-24 ' href='https://docs.google.com/document/d/1PzLgYV0vm3BsbVXcwsHOjBsJNHE_vraTTxf8-oYSVmI/edit?usp=sharing' >
+    <div className=' mx-24'>
+    <Button variant="outlined"  color='primary'   href='https://docs.google.com/document/d/1PzLgYV0vm3BsbVXcwsHOjBsJNHE_vraTTxf8-oYSVmI/edit?usp=sharing' >
       Download CV
     </Button>
+    </div>
         
       
   )
@@ -278,7 +266,7 @@ interface Blobprops {
 const Blob : FC<Blobprops>=(props? ): JSX.Element=>{
   
   return (
-   <svg version="1.1"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" id="blobSvg" style={{opacity: 1,height:'25rem'}} filter="blur(0px)" transform="rotate(0)"><image x="0" y="0" className='block object-contain align-middle justify-end max-h-2' width="100%" height="100%" clipPath="url(#shape)" href="https://images.unsplash.com/photo-1574158622682-e40e69881006?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=980&amp;q=80" preserveAspectRatio="none"></image>                        <defs>                        <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">                            <stop offset="0%" style={{color: 'rgb(246, 106, 234)'}}></stop>                            <stop offset="100%" style={{color: 'rgb(246, 106, 234)'}} ></stop>                        </linearGradient>                        </defs>                                            <clipPath id="shape"><path id="blob" fill="url(#gradient)">                            <animate attributeName="d" dur="19700ms" repeatCount="indefinite" values="M440.5,320.5Q418,391,355.5,442.5Q293,494,226,450.5Q159,407,99,367Q39,327,31.5,247.5Q24,168,89,125.5Q154,83,219.5,68Q285,53,335.5,94.5Q386,136,424.5,193Q463,250,440.5,320.5Z;M453.78747,319.98894Q416.97789,389.97789,353.96683,436.87838Q290.95577,483.77887,223.95577,447.43366Q156.95577,411.08845,105.64373,365.97789Q54.33169,320.86732,62.67444,252.61056Q71.01719,184.3538,113.01965,135.21007Q155.02211,86.06634,220.52211,66.46683Q286.02211,46.86732,335.5,91.94472Q384.97789,137.02211,437.78747,193.51106Q490.59704,250,453.78747,319.98894Z;M411.39826,313.90633Q402.59677,377.81265,342.92059,407.63957Q283.24442,437.46649,215.13648,432.5428Q147.02853,427.61911,82.23325,380.9572Q17.43796,334.29529,20.45223,250.83809Q23.46649,167.38089,82.5856,115.05707Q141.70471,62.73325,212.19045,63.73015Q282.67618,64.72705,352.67308,84.79839Q422.66998,104.86972,421.43486,177.43486Q420.19974,250,411.39826,313.90633Z;M440.5,320.5Q418,391,355.5,442.5Q293,494,226,450.5Q159,407,99,367Q39,327,31.5,247.5Q24,168,89,125.5Q154,83,219.5,68Q285,53,335.5,94.5Q386,136,424.5,193Q463,250,440.5,320.5Z;"></animate>                        </path></clipPath></svg>
+   <svg version="1.1"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" id="blobSvg" style={{opacity: 1,height:'25rem'}} filter="blur(0px)" transform="rotate(0)"><image x="0" y="0" className='block object-contain align-middle justify-end max-h-2' width="100%" height="100%" clipPath="url(#shape)" href="https://media.licdn.com/dms/image/D4D03AQH-Jf2x9M3Bbw/profile-displayphoto-shrink_800_800/0/1704433276138?e=1710979200&v=beta&t=UJOdjAbFBSwlNY27-bd3CAVapQ4lCiqdRVIpc2QO1B0" preserveAspectRatio="none"></image>                        <defs>                        <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">                            <stop offset="0%" style={{color: 'rgb(246, 106, 234)'}}></stop>                            <stop offset="100%" style={{color: 'rgb(246, 106, 234)'}} ></stop>                        </linearGradient>                        </defs>                                            <clipPath id="shape"><path id="blob" fill="url(#gradient)">                            <animate attributeName="d" dur="19700ms" repeatCount="indefinite" values="M440.5,320.5Q418,391,355.5,442.5Q293,494,226,450.5Q159,407,99,367Q39,327,31.5,247.5Q24,168,89,125.5Q154,83,219.5,68Q285,53,335.5,94.5Q386,136,424.5,193Q463,250,440.5,320.5Z;M453.78747,319.98894Q416.97789,389.97789,353.96683,436.87838Q290.95577,483.77887,223.95577,447.43366Q156.95577,411.08845,105.64373,365.97789Q54.33169,320.86732,62.67444,252.61056Q71.01719,184.3538,113.01965,135.21007Q155.02211,86.06634,220.52211,66.46683Q286.02211,46.86732,335.5,91.94472Q384.97789,137.02211,437.78747,193.51106Q490.59704,250,453.78747,319.98894Z;M411.39826,313.90633Q402.59677,377.81265,342.92059,407.63957Q283.24442,437.46649,215.13648,432.5428Q147.02853,427.61911,82.23325,380.9572Q17.43796,334.29529,20.45223,250.83809Q23.46649,167.38089,82.5856,115.05707Q141.70471,62.73325,212.19045,63.73015Q282.67618,64.72705,352.67308,84.79839Q422.66998,104.86972,421.43486,177.43486Q420.19974,250,411.39826,313.90633Z;M440.5,320.5Q418,391,355.5,442.5Q293,494,226,450.5Q159,407,99,367Q39,327,31.5,247.5Q24,168,89,125.5Q154,83,219.5,68Q285,53,335.5,94.5Q386,136,424.5,193Q463,250,440.5,320.5Z;"></animate>                        </path></clipPath></svg>
         )
 }
 
@@ -351,7 +339,7 @@ interface Edu{
 const Education: FC<Edu>=(props?):JSX.Element=>{ 
   return(
     <>
-    <Card className="lg:w-[600px] md:w-[400px] my-6 shadow-md hover:shadow-2xl" >
+    <Card className="lg:w-[600px] md:w-[500px] sm:w-[400px] my-6 shadow-md hover:shadow-2xl" >
       <CardHeader className="flex gap-3">
         <SchoolIcon/>
         
@@ -365,13 +353,13 @@ const Education: FC<Edu>=(props?):JSX.Element=>{
       </CardBody>
       <Divider/>
       <CardFooter>
-        <Link
+        <Link_
           isExternal
           showAnchorIcon
           href={props?.href}
         >
           {props?.School}
-        </Link>
+        </Link_>
       </CardFooter>
     </Card>
     
@@ -455,8 +443,8 @@ const Projects:FC<ProjectInterface>=(props):JSX.Element=>{
 function Form(){
   return(
     <>
-    <div className='  flex flex-row w-full h-60 items-center justify-center lg:ps-20'>
-      <div className='flex flex-col w-full h-60 lg:ml-20 ml-auto items-center justify-between '>
+    <div className='  flex  flex-row w-full h-60 items-center justify-center   '>
+      <div className='flex flex-col w-full h-60    max-md:hidden    items-center justify-between  '>
         <Typography variant="h6"  noWrap component="div" sx={{ flexGrow: 2 ,mx:1}}>
           <AddIcCallIcon className='mr-2' fontSize='large' color='primary'/>
           Contact me
@@ -475,9 +463,9 @@ function Form(){
           <Typography className='ml-8' color={'gray'} variant='body2' noWrap component="div" sx={{ flexGrow: 2 ,mx:1}}>Pune,India</Typography>
         </Typography>
         </div>
-        
+        <MessForm/>
     </div>
-    <MessForm/>
+    
     
     </>
   )
